@@ -15,6 +15,7 @@
       height: 100vh;
     }
     .container {
+      <div class="glitch" data-text="GENE//SYS">GENE//SYS</div>
       background: #181818;
       padding: 2em 3em;
       border-radius: 10px;
@@ -63,57 +64,30 @@
     button:hover {
       background: #00cc77;
     }
-    /* Глитч-эффект */
-    .glitch {
-      color: #00ff99;
-      position: relative;
-      font-size: 2em;
-      font-family: 'Courier New', Courier, monospace;
-      margin-bottom: 1em;
-      letter-spacing: 2px;
-    }
-    .glitch::before, .glitch::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0; top: 0;
-      width: 100%;
-      overflow: hidden;
-    }
-    .glitch::before {
-      color: #ff00cc;
-      z-index: -1;
-      left: 2px;
-      text-shadow: -2px 0 #ff00cc;
-      animation: glitch-anim 1s infinite linear alternate-reverse;
-    }
-    .glitch::after {
-      color: #00ffff;
-      z-index: -2;
-      left: -2px;
-      text-shadow: 2px 0 #00ffff;
-      animation: glitch-anim2 1.2s infinite linear alternate-reverse;
-    }
-    @keyframes glitch-anim {
-      0% { clip-path: inset(0 0 80% 0); }
-      20% { clip-path: inset(0 0 60% 0); }
-      40% { clip-path: inset(0 0 40% 0); }
-      60% { clip-path: inset(0 0 20% 0); }
-      80% { clip-path: inset(0 0 60% 0); }
-      100% { clip-path: inset(0 0 80% 0); }
-    }
-    @keyframes glitch-anim2 {
-      0% { clip-path: inset(80% 0 0 0); }
-      20% { clip-path: inset(60% 0 0 0); }
-      40% { clip-path: inset(40% 0 0 0); }
-      60% { clip-path: inset(20% 0 0 0); }
-      80% { clip-path: inset(60% 0 0 0); }
-      100% { clip-path: inset(80% 0 0 0); }
-    }
-    /* Мерцающий текст и курсор */
     .blink {
-      display: inline-block;
-      color: #ff5555
-  </style>
+  display: inline-block;
+  color: #ff5555;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1em;
+  margin-top: 1em;
+  letter-spacing: 2px;
+  animation: blink 1.2s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: #fff;
+  animation: cursor-blink 0.7s steps(1) infinite;
+}
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+     </style>
 </head>
 <body>
   <div class="container">
@@ -122,6 +96,7 @@
       <input type="text" id="access" autocomplete="off" placeholder="Код доступа">
       <button type="submit">Войти</button>
     </form>
+    <div class="blink">ВРЕМЯ УТЕКАЕТ<span class="cursor">...</span></div>
     <span class="hint" style="opacity:0.15; font-size:0.9em; user-select: none; display: block; margin-top: 1em;">
     Ответ на главный вопрос жизни, Вселенной и всего такого...
   </span>
@@ -150,4 +125,3 @@
   </script>
 </body>
 </html>
-
